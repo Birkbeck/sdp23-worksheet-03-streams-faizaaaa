@@ -10,14 +10,13 @@ public class Outline {
     return List.of("hi", "bat", "ear", "hello", "iguana",
             "beaver", "winterland", "elephant", "eye", "qi");
   }
-
   // Loop through the words and print each one on a separate line,
   // with two spaces in front of each word.
   public static void question1() {
     List<String> words = getList();
     System.out.println("1: ");
-    // YOUR CODE
-  }
+    words.stream().forEach((e -> System.out.println("  " +e)));
+    }
 
   // Repeat this problem but without two spaces in front of each word.
   // This should be trivial if you use the same approach as the previous
@@ -25,7 +24,7 @@ public class Outline {
   public static void question2() {
     List<String> words = getList();
     System.out.println("2: ");
-    // YOUR CODE
+    words.stream().forEach(System.out::println);
   }
 
   // For each of the following lambda expressions (see Question 5 in Worksheet 2),
@@ -39,6 +38,12 @@ public class Outline {
   public static void question3() {
     List<String> words = getList();
     System.out.println("3:");
+    List<String> List1 = words.stream().filter(s -> s.length() < 4).collect(Collectors.toList());
+    List1.stream().forEach(System.out::println);
+    List<String> List2 = words.stream().filter(s -> s.contains("b")).collect(Collectors.toList());
+    List<String> List3 = words.stream().filter(s -> (s.length()%2==0)).collect(Collectors.toList());
+    List2.stream().forEach(System.out::println);
+    List3.stream().forEach(System.out::println);
     // YOUR CODE
   }
 
@@ -55,6 +60,12 @@ public class Outline {
     List<String> words = getList();
     System.out.println("4:");
     // YOUR CODE
+    List<String> List1 = words.stream().map(s -> s + "!").collect(Collectors.toList());
+    List1.stream().forEach(System.out::println);
+    List<String> List2 = words.stream().map(s -> s.replace("i","eye")).collect(Collectors.toList());
+    List<String> List3 = words.stream().map(s -> s.toUpperCase()).collect(Collectors.toList());
+    List2.stream().forEach(System.out::println);
+    List3.stream().forEach(System.out::println);
   }
 
 
@@ -120,6 +131,8 @@ public class Outline {
 
   public static void main(String... args) { // varargs alternative to String[]
     question1();
-
+    question2();
+    question3();
+    question4();
   }
 }
